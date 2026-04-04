@@ -28,7 +28,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile -windowed -icon=icon.ico main.py --name ppt_monitor
+          pyinstaller --onefile --windowed --icon=icon.ico main.py --name ppt_monitor
           cp icon.ico dist/
 
       - name: Upload artifact
