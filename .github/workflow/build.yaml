@@ -28,10 +28,11 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile -windowed main.py
+          pyinstaller --onefile -windowed -icon=icon.ico main.py --name ppt_monitor
+          cp icon.ico dist/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ppt_monitor_exe
-          path: dist/main.exe
+          name: ppt_monitor
+          path: dist/ppt_monitor.exe
