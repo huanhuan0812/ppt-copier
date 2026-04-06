@@ -4,15 +4,30 @@ from core.logger import Logger
 from core.single_instance import SingleInstance
 from core.config import ConfigManager
 from ui.tray import SystemTrayApp
+from utils.powerpoint_checker import quick_check
+import argparse
+import win32api
+import win32con
 
 
 def main():
+    parser = argparse.ArgumentParser(description='程序描述')
+    parser.add_argument('-s', '--skip-check', action='store_true', help='跳过ppt检查')
+    args = parser.parse_args()
+
     single_instance = SingleInstance()
     if not single_instance.is_first():
         logger = Logger()
         logger.info("程序已在运行，尝试激活现有窗口...")
         single_instance.bring_to_front()
         return
+    
+    if not args.skip_check:
+        if not quick_check():
+            logger = Logger()
+            logger.error("PowerPoint COM对象不可用，程序无法正常运行")
+            win32api.MessageBox(0, "PowerPoint COM对象不可用，程序无法正常运行", "错误", win32con.MB_OK | win32con.MB_ICONERROR)
+            return
     
     logger = Logger()
     logger.info("=" * 60)
