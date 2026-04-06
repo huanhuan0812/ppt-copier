@@ -46,7 +46,11 @@
 pip install pyinstaller
 pyinstaller --onefile --windowed --icon=icon.ico ppt_copier.py
 ```
-
+### 运行参数
+  - 可以使用 `-s / --skip-check` 跳过PowerPoint检查（仅用于测试）
+  ```bash
+  python ppt_copier.py -s
+  ```
 ---
 
 ## 配置文件说明
