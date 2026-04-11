@@ -28,11 +28,11 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile --windowed --icon=icon.ico main.py --name ppt_monitor
+          pyinstaller --noconfirm --onefile --windowed --icon "icon.ico" --name "ppt-copier" --optimize "2" --hidden-import "pywin32" --hidden-import "psutil" --hidden-import "core" --hidden-import "ui" --hidden-import "events" --hidden-import "utils" --collect-submodules "core" --collect-submodules "ui" --collect-submodules "events" --collect-submodules "utils" --paths "./"  "main.py"
           cp icon.ico dist/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ppt_monitor
-          path: dist/ppt_monitor.exe
+          path: dist/
