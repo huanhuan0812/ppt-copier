@@ -1,5 +1,7 @@
 # PPT文件备份监控程序
 
+### 注意，这个仓库的功能已被[ppt-copier-addin](https://github.com/huanhuan0812/ppt-copier-addin)重新实现，且性能等方面均优于这个仓库，所以此仓库被归档
+
 ## 简介
 
 这是一个专为Windows平台设计的PowerPoint文件自动备份工具。当您插入U盘或其他移动设备并编辑其中的PPT文件时，程序会自动将文件备份到本地指定目录，防止数据丢失（老师不保留课件）。
